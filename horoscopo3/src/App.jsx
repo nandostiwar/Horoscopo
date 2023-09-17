@@ -6,17 +6,16 @@ import { Link, useNavigate } from "react-router-dom";
 
 const App = () => {
 
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
-  const goTo = useNavigate();
-
-  const botonUser = (event) => { goTo("/User") }
-  const botonAdmin = (event) => { goTo("/Admin") }
+  const goTo = useNavigate()
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
+  const [boton, setBoton] = useState(0)
+  
   const validateUser = (event) => {
     if(username === 'user' && password === 'user123') {
-      goTo("/User");} 
+      goTo("/User")} 
     else if(username === 'admin' && password==='admin123'){
-      goTo("/Admin");} 
+      goTo("/Admin")} 
     else {
       alert("Usuario Incorrecto")
     }
@@ -34,6 +33,9 @@ const App = () => {
           <br></br><br></br>
           <input type="submit" value="Ingresar"/>
       </form>
+      <br></br><br></br>
+      <button onClick={() => setBoton(boton=>boton+1)}>Contar</button>
+      <h1>{boton}</h1>
     </div>
   )
 }
